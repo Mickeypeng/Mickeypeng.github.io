@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<script src="js/jquery.min.js"></script>
+<script src="js/snap.svg-min.js"></script>
+<script src="js/snap.svg.zpd.js"></script>
+<script src="js/tinycolor.js"></script>
+<script src="js/draw.js"></script>
+<script src="js/data.js"></script>
+<head>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 22px;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #34495E;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {
+            background-color: #2E4053
+        }
+
+        .button:active {
+            background-color: #34495E;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
+    <title>PMPaxos</title>
+    <link rel="shortcut icon" href="images/wd_favicon.ico"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="htmleaf-container">
+    <div class="wrapper">
+        <div class="container">
+            <img src="images/umich.jpg"  alt="" />
+            <h1>Please input the parameters</h1>
+            <!--<form class="form" method="post" action="/" onsubmit="return doLogin();">-->
+            </br>
+            <form class="form" action="/api/v1/draw" method="get">
+                <input type="number" placeholder="Start" name="start" id="start">
+                <input type="number" placeholder="End" name="end" id="end">
+                <input type="number" placeholder="client id" name="cid" id="cid">
+                <input type="number" placeholder="client sequence number" name="csn" id="csn">
+                <select name="task" id="task" onchange="testimg(this.value)">
+                    <option value="">Please choose the task</option>  
+                    <option value="0" >min</option>  
+                    <option value="50">median</option>  
+                    <option value="100">max</option>  
+                </select>  
+                <input type="submit" class="button">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('form').submit(function (event) {
+        event.preventDefault();
+        draw(preCalculatedData);
+    });
+</script>
+
+
+</body>
+</html>
